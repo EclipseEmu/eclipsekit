@@ -34,6 +34,7 @@ typedef enum EK_SWIFT_ENUM {
 EK_EXPORT_AS("GameCoreVideoPixelFormat")
 typedef enum EK_SWIFT_ENUM {
 	EKCoreVideoPixelFormatBgra8Unorm,
+	EKCoreVideoPixelFormatRgba8Unorm,
 } EKCoreVideoPixelFormat;
 
 EK_EXPORT_AS("GameCoreVideoRenderingType")
