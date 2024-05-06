@@ -48,6 +48,11 @@ typedef enum EK_SWIFT_ENUM {
 	EKCoreSettingKindBoolean,
 } EKCoreSettingKind;
 
+EK_EXPORT_AS("GameCoreCheatCharacterSet")
+typedef enum EK_SWIFT_ENUM {
+    EKCoreCheatCharacterSetHexadecimal,
+} EKCoreCheatCharacterSet;
+
 EK_EXPORT_AS("GameInput")
 typedef enum EK_SWIFT_ENUM {
 	EKInputNone				  = 0b00000000000000000000000000000000,
@@ -125,7 +130,7 @@ typedef struct {
 	/// The user-shown name of this cheat format.
 	const char* displayName;
 	/// A string of allowed characters, i.e. "ABXYabxy" to allow both upper and lower case a, b, x, and y.
-	const char* characterSet;
+	EKCoreCheatCharacterSet characterSet;
 	/// The user-shown name of this cheat format.
 	const char* format;
 } EKCheatFormat;
