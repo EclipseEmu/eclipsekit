@@ -130,16 +130,6 @@ typedef struct {
 	const char* format;
 } EKCheatFormat;
 
-EK_EXPORT_AS("GameCoreCheat")
-typedef struct {
-	/// The format of the cheat code
-	const char* formatId;
-	/// The actual cheat code.
-	const char* code;
-	/// Wether or not this cheat is enabled.
-	bool enabled;
-} EKCheat;
-
 EK_EXPORT_AS("GameCoreSettingFile")
 typedef struct {
 	/// The expected MD5 checksum of the file.
@@ -339,14 +329,23 @@ typedef struct {
 
 #pragma mark - Cheats
 
-	/// Removes any existing cheats and makes the given list the currently active one.
+	/// Adds or updates the given cheat code.
 	///
 	/// Parameters:
 	///   - data: the data field on the GameCore struct.
-	///	  - player: The player to set the inputs for.
-	///	  - inputs: An u32 with each bit using an ``EKInput``.
+	///	  - format: The cheat code's format
+	///	  - code: The cheat code
+    ///   - enabled: Whether or not to enable this cheat
 	///	Returns: If the cheats could be set.
-	bool (*setCheats)(void* data, EKCheat* cheats, size_t count);
+	bool (*setCheat)(void* data, const char *format, const char *code, bool enabled);
+    
+    /// Removes all existing cheats.
+    ///
+    /// Parameters:
+    ///   - data: the data field on the GameCore struct.
+    ///   - format: The cheat code's format
+    /// Returns: If the cheats could be set.
+    bool (*clearCheats)(void *data);
 } EKCore;
 
 EK_EXPORT_AS("GameCoreInfo")
