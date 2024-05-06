@@ -336,7 +336,7 @@ typedef struct {
 	///	  - format: The cheat code's format
 	///	  - code: The cheat code
     ///   - enabled: Whether or not to enable this cheat
-	///	Returns: If the cheats could be set.
+	///	Returns: If the cheat could be set.
 	bool (*setCheat)(void* data, const char *format, const char *code, bool enabled);
     
     /// Removes all existing cheats.
@@ -344,8 +344,7 @@ typedef struct {
     /// Parameters:
     ///   - data: the data field on the GameCore struct.
     ///   - format: The cheat code's format
-    /// Returns: If the cheats could be set.
-    bool (*clearCheats)(void *data);
+    void (*clearCheats)(void *data);
 } EKCore;
 
 EK_EXPORT_AS("GameCoreInfo")
