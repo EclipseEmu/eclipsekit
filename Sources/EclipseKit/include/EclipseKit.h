@@ -15,7 +15,7 @@
 
 #pragma mark - Function Pointers
 
-typedef void (*EKCoreSaveCallback)(const char* path);
+typedef void (*EKCoreSaveCallback)(const void* const callbackContext);
 typedef uint64_t (*EKCoreAudioWriteCallback)(const void* const callbackContext,
 	const void* buffer,
 	uint64_t count);
