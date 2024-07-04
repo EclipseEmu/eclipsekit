@@ -13,6 +13,10 @@
 #define EK_SWIFT_ENUM __attribute__((enum_extensibility(open)))
 #endif
 
+#ifndef EK_SWIFT_OPTIONS
+#define EK_SWIFT_OPTIONS __attribute__((flag_enum)) __attribute__((enum_extensibility(open)))
+#endif
+
 #pragma mark - Function Pointers
 
 typedef void (*EKCoreSaveCallback)(const void* const callbackContext);
@@ -54,7 +58,7 @@ typedef enum EK_SWIFT_ENUM {
 } EKCoreCheatCharacterSet;
 
 EK_EXPORT_AS("GameInput")
-typedef enum EK_SWIFT_ENUM {
+typedef enum EK_SWIFT_OPTIONS {
 	EKInputNone				  = 0b00000000000000000000000000000000,
 	EKInputFaceButtonUp		  = 0b00000000000000000000000000000001,
 	EKInputFaceButtonDown	  = 0b00000000000000000000000000000010,
