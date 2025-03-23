@@ -368,6 +368,8 @@ typedef struct {
 	const char* const version;
 	/// The URL to the core's source code repository.
 	const char* const sourceCodeUrl;
+    /// The number of systems this core supports.
+    const size_t supportedSystemsCount;
     /// The systems this core supports.
     const EKSystem const* supportedSystems;
     /// The settings this core provides.
