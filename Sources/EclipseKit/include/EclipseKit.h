@@ -108,23 +108,23 @@ typedef enum EK_SWIFT_ENUM {
 EK_EXPORT_AS("GameCoreAudioFormat")
 typedef struct {
 	/// The common format the core uses.
-	EKCoreCommonAudioFormat commonFormat;
+	const EKCoreCommonAudioFormat commonFormat;
 	/// The sample rate the core uses.
-	double sampleRate;
+	const double sampleRate;
 	/// The number of channels.
-	uint32_t channelCount;
+	const uint32_t channelCount;
 } EKCoreAudioFormat;
 
 EK_EXPORT_AS("GameCoreVideoFormat")
 typedef struct {
 	/// The video rendering type the core uses.
-	EKCoreVideoRenderingType renderingType;
+	const EKCoreVideoRenderingType renderingType;
 	/// The pixel format the core uses.
-	EKCoreVideoPixelFormat pixelFormat;
+	const EKCoreVideoPixelFormat pixelFormat;
 	/// The width of the screen.
-	uint32_t width;
+	const uint32_t width;
 	/// The height of the screen.
-	uint32_t height;
+	const uint32_t height;
 } EKCoreVideoFormat;
 
 EK_EXPORT_AS("GameCoreCheatFormat")
@@ -134,7 +134,7 @@ typedef struct {
 	/// The user-shown name of this cheat format.
 	const char* displayName;
 	/// A string of allowed characters, i.e. "ABXYabxy" to allow both upper and lower case a, b, x, and y.
-	EKCoreCheatCharacterSet characterSet;
+	const EKCoreCheatCharacterSet characterSet;
 	/// The user-shown name of this cheat format.
 	const char* format;
 } EKCheatFormat;
@@ -150,7 +150,7 @@ typedef struct {
 EK_EXPORT_AS("GameCoreSettingBoolean")
 typedef struct {
 	/// The default value of this setting
-	bool defaultValue;
+	const bool defaultValue;
 } EKCoreSettingBoolean;
 
 EK_EXPORT_AS("GameCoreSetting")
@@ -159,26 +159,26 @@ typedef struct {
 	const char* id;
 	/// The system this applies to, use ``EKGameSystemUnknown`` if it applies to
 	/// any system.
-	EKSystem system;
+	const EKSystem system;
 	/// The user-shown name of this setting.
 	const char* displayName;
 	/// Whether or not this setting is required for the core to run.
-	bool required;
+	const bool required;
 	/// What type of setting this will be.
-	EKCoreSettingKind kind;
-
+	const EKCoreSettingKind kind;
+ 
 	union {
-		EKCoreSettingFile* file;
-		EKCoreSettingBoolean* boolean;
+		const EKCoreSettingFile* const file;
+		const EKCoreSettingBoolean* const boolean;
 	};
 } EKCoreSetting;
 
 EK_EXPORT_AS("GameCoreSettings")
 typedef struct {
 	/// The version of these settings.
-	uint16_t version;
+	const uint16_t version;
 	/// The number of settings in the ``items`` field.
-	size_t itemsCount;
+	const size_t itemsCount;
 	/// The list of settings.
 	const EKCoreSetting* const items;
 } EKCoreSettings;
@@ -359,22 +359,24 @@ typedef struct {
 EK_EXPORT_AS("GameCoreInfo")
 typedef struct {
 	// A unique identifier for this core.
-	const char* id;
+	const char* const id;
 	/// The user-shown name of the core.
-	const char* name;
+	const char* const name;
 	/// The developer(s) responsible for the core.
-	const char* developer;
+	const char* const developer;
 	/// The version of the core.
-	const char* version;
+	const char* const version;
 	/// The URL to the core's source code repository.
-	const char* sourceCodeUrl;
-	/// The settings this core provides.
-	EKCoreSettings settings;
+	const char* const sourceCodeUrl;
+    /// The systems this core supports.
+    const EKSystem const* supportedSystems;
+    /// The settings this core provides.
+	const EKCoreSettings settings;
 
 	/// The number of cheat formats.
-	size_t cheatFormatsCount;
+	const size_t cheatFormatsCount;
 	/// A list of supported cheat formats.
-	EKCheatFormat* cheatFormats;
+	const EKCheatFormat const* cheatFormats;
 
 	/// A function to do any initialization.
 	///
@@ -382,7 +384,7 @@ typedef struct {
 	///    - system: The system to use
 	///    - callbacks: The core callbacks
 	/// - Returns: an instance of an EKCore.
-	EKCore* (*setup)(EKSystem system, const EKCoreCallbacks* const callbacks);
+	EKCore* (*const setup)(EKSystem system, const EKCoreCallbacks* const callbacks);
 } EKCoreInfo;
 
 #endif /* EclipseKit_h */
