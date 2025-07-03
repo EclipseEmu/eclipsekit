@@ -1,10 +1,10 @@
 public enum System: UInt16, RawRepresentable, Sendable, CaseIterable {
-	case unknown
-	case gb
-	case gbc
-	case gba
-	case nes
-	case snes
+	case unknown = 0
+	case gb = 1
+	case gbc = 2
+	case gba = 3
+	case nes = 4
+	case snes = 5
 }
 
 public extension System {

@@ -76,12 +76,12 @@ public struct CoreInputDeque: ~Copyable, Sendable {
 
 		let len1 = needsWrap ? capacity - head : available
 		for i in head..<(head + len1) {
-			core.setInput(inner[i].delta, for: inner[i].player)
+			core.writeInput(inner[i].delta, for: inner[i].player)
 		}
 
 		let len2 = needsWrap ? nextHead : 0
 		for i in 0..<len2 {
-			core.setInput(inner[i].delta, for: inner[i].player)
+			core.writeInput(inner[i].delta, for: inner[i].player)
 		}
 	}
 }

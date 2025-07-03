@@ -1,5 +1,3 @@
-import QuartzCore
-
 public protocol CoreVideoRendererProtocol: ~Copyable {
 	init(
 		core: inout some CoreProtocol,

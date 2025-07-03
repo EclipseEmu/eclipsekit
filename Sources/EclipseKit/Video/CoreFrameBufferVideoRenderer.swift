@@ -5,7 +5,10 @@ import OSLog
 import QuartzCore
 
 private extension Logger {
-	static let frameBufferRenderer = Logger(subsystem: Bundle.module.bundleIdentifier ?? "dev.magnetar.eclipseemu", category: "frameBufferRenderer")
+	static let frameBufferRenderer = Logger(
+		subsystem: Bundle.module.bundleIdentifier ?? "dev.magnetar.eclipseemu.kit",
+		category: "frameBufferRenderer"
+	)
 }
 
 public enum FrameBufferRendererError: Error {
