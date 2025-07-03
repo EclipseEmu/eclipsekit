@@ -50,4 +50,24 @@ public struct CoreInputDelta: Sendable {
 		self.value = .init(pressed ? 1.0 : 0.0, value)
 		self.timestamp = timestamp
 	}
+
+	@inlinable
+	public var isUp: Bool {
+		value.y != Self.IGNORE_VALUE && value.y > 0
+	}
+
+	@inlinable
+	public var isDown: Bool {
+		value.y != Self.IGNORE_VALUE && value.y < 0
+	}
+
+	@inlinable
+	public var isLeft: Bool {
+		value.x != Self.IGNORE_VALUE && value.x < 0
+	}
+
+	@inlinable
+	public var isRight: Bool {
+		value.x != Self.IGNORE_VALUE && value.x > 0
+	}
 }
