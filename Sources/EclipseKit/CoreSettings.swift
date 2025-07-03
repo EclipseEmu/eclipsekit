@@ -19,7 +19,7 @@ public protocol CoreSettings: Sendable, Codable {
 	/// If a field is required, it must be checked at runtime or have a default value.
 	init()
 
-	static func migrate(_ data: Data, from oldVersion: UInt, to newVersion: UInt) -> Self
+	static func migrate(_ data: Data, from oldVersion: UInt) -> Self
 }
 
 @MainActor
