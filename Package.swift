@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "EclipseKit",
-    platforms: [.iOS(.v13), .macOS(.v13)],
+    platforms: [.iOS(.v14), .macOS(.v11)],
     products: [
         .library(name: "EclipseKit", targets: ["EclipseKit"]),
     ],
