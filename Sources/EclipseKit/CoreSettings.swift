@@ -80,15 +80,15 @@ public struct CoreFileSettingDescriptor<Settings: CoreSettings>: Identifiable {
 	public let displayName: String
 	public let required: Bool
 	public let type: FileType
-	public let md5: Set<String>
+	public let sha1: Set<String>
 
-	public init(id: UInt, target: WritableKeyPath<Settings, CoreSettingsFile?>, displayName: String, required: Bool, type: FileType, md5: Set<String> = []) {
+	public init(id: UInt, target: WritableKeyPath<Settings, CoreSettingsFile?>, displayName: String, required: Bool, type: FileType, sha1: Set<String> = []) {
 		self.id = id
 		self.target = target
 		self.displayName = displayName
 		self.required = required
 		self.type = type
-		self.md5 = md5
+		self.sha1 = sha1
 	}
 
 	public enum FileType {
