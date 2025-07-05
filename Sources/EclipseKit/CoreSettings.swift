@@ -1,7 +1,7 @@
 import Foundation.NSData
 import Foundation.NSUUID
 
-public struct CoreSettingsFile: Hashable, Sendable, Codable {
+public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
 	public let id: UInt
 	public let fileExtension: String?
 
@@ -11,7 +11,7 @@ public struct CoreSettingsFile: Hashable, Sendable, Codable {
 	}
 }
 
-public protocol CoreSettings: Sendable, Codable {
+public protocol CoreSettings: Sendable, Codable, Equatable {
 	@MainActor
 	static var descriptor: CoreSettingsDescriptor<Self> { get }
 
