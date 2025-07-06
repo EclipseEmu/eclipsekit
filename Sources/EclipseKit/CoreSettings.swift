@@ -1,16 +1,6 @@
 import Foundation.NSData
 import Foundation.NSUUID
 
-public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
-	public let id: UInt
-	public let fileExtension: String?
-
-	public init(id: UInt, fileExtension: String?) {
-		self.id = id
-		self.fileExtension = fileExtension
-	}
-}
-
 public protocol CoreSettings: Sendable, Codable, Equatable {
 	@MainActor
 	static var descriptor: CoreSettingsDescriptor<Self> { get }
@@ -20,6 +10,27 @@ public protocol CoreSettings: Sendable, Codable, Equatable {
 	init()
 
 	static func migrate(_ data: Data, from oldVersion: UInt) -> Self
+}
+
+/// The settings object, with all resolved files.
+public struct CoreResolvedSettings<Settings: CoreSettings>: ~Copyable, Sendable {
+	public let settings: Settings
+	public let resolvedFiles: [CoreSettingsFile : URL]
+
+	public init(settings: Settings, resolvedFiles: [CoreSettingsFile : URL]) {
+		self.settings = settings
+		self.resolvedFiles = resolvedFiles
+	}
+}
+
+public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
+	public let id: UInt
+	public let fileExtension: String?
+
+	public init(id: UInt, fileExtension: String?) {
+		self.id = id
+		self.fileExtension = fileExtension
+	}
 }
 
 @MainActor
