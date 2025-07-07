@@ -61,7 +61,7 @@ public struct CoreInputDeque: ~Copyable, Sendable {
 		inner[tail] = .init(player: player, delta: delta)
 	}
 
-	public func dequeue<Core: CoreProtocol>(into core: inout Core) {
+	public func dequeue<Core: CoreProtocol & ~Copyable>(into core: inout Core) {
 		let capacity = inner.count
 		let head = self.head.load(ordering: .acquiring)
 		let tail = self.tail.load(ordering: .relaxed)
