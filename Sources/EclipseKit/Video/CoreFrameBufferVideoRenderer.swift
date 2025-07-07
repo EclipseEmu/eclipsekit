@@ -45,7 +45,7 @@ public final class CoreFrameBufferVideoRenderer: CoreVideoRendererProtocol {
 		isolation: isolated (any Actor)? = #isolation
 	) async throws(FrameBufferRendererError) {
 		let width = Int(format.width)
-		let height = Int(format.width)
+		let height = Int(format.height)
 		let pixelFormat = format.pixelFormat
 		let metalPixelFormat = pixelFormat.metalFormat
 
