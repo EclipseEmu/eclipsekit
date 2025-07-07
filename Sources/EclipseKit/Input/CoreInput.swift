@@ -52,6 +52,11 @@ public struct CoreInputDelta: Sendable {
 	}
 
 	@inlinable
+	public var isPressed: Bool {
+		value.x != 0.0
+	}
+
+	@inlinable
 	public var isUp: Bool {
 		value.y != Self.IGNORE_VALUE && value.y > 0
 	}
