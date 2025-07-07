@@ -39,7 +39,7 @@ public final class CoreFrameBufferVideoRenderer: CoreVideoRendererProtocol {
 	private let samplerState: any MTLSamplerState
 
 	public init(
-		core: inout (some CoreProtocol & ~Copyable),
+		core: inout some CoreProtocol,
 		for format: consuming CoreVideoDescriptor,
 		with sharedContext: CoreSharedRenderingContext,
 		isolation: isolated (any Actor)? = #isolation

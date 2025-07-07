@@ -1,6 +1,6 @@
 public protocol CoreVideoRendererProtocol: ~Copyable {
 	init(
-		core: inout (some CoreProtocol & ~Copyable),
+		core: inout some CoreProtocol,
 		for format: consuming CoreVideoDescriptor,
 		with sharedContext: CoreSharedRenderingContext,
 		isolation: isolated (any Actor)?
