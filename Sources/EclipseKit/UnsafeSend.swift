@@ -4,6 +4,7 @@
 ///            but couldn't conform to ``Sendable`` for one reason or another.
 ///            For example, ``RunLoop.perform`` is thread-safe, but ``RunLoop`` itself is not.
 @unsafe
+@frozen
 public struct UnsafeSend<Value: ~Copyable>: @unchecked Sendable, ~Copyable {
 	public let inner: Value
 
@@ -19,6 +20,7 @@ public struct UnsafeSend<Value: ~Copyable>: @unchecked Sendable, ~Copyable {
 ///            meaning it can continue to be used on the origin thread.
 ///            Only use it for things like streams and continuations.
 @unsafe
+@frozen
 public struct UnsafeCopyableSend<Value>: @unchecked Sendable {
 	public let inner: Value
 
