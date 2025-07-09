@@ -57,22 +57,32 @@ public struct CoreInputDelta: Sendable {
 	}
 
 	@inlinable
+	public var useX: Bool {
+		value.x != Self.IGNORE_VALUE
+	}
+
+	@inlinable
+	public var useY: Bool {
+		value.y != Self.IGNORE_VALUE
+	}
+
+	@inlinable
 	public var isUp: Bool {
-		value.y != Self.IGNORE_VALUE && value.y < 0
+		value.y > 0
 	}
 
 	@inlinable
 	public var isDown: Bool {
-		value.y != Self.IGNORE_VALUE && value.y > 0
+		value.y < 0
 	}
 
 	@inlinable
 	public var isLeft: Bool {
-		value.x != Self.IGNORE_VALUE && value.x < 0
+		value.x < 0
 	}
 
 	@inlinable
 	public var isRight: Bool {
-		value.x != Self.IGNORE_VALUE && value.x > 0
+		value.x > 0
 	}
 }
