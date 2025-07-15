@@ -39,6 +39,12 @@ public struct CoreInputDelta: Sendable {
 
 	public static let zero: Self = .init(input: [], x: 0, y: 0, timestamp: 0)
 
+	public init(input: CoreInput, value: SIMD2<Float32>, timestamp: Double) {
+		self.input = input
+		self.value = value
+		self.timestamp = timestamp
+	}
+
 	public init(input: CoreInput, x: Float32, y: Float32, timestamp: Double) {
 		self.input = input
 		self.value = .init(x, y)
