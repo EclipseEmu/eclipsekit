@@ -1,7 +1,7 @@
 import Foundation.NSData
 import Foundation.NSUUID
 
-public protocol CoreSettings: Sendable, Codable, Equatable {
+public protocol CoreSettings: Sendable, Equatable {
 	@MainActor
 	static var descriptor: CoreSettingsDescriptor<Self> { get }
 
@@ -9,7 +9,8 @@ public protocol CoreSettings: Sendable, Codable, Equatable {
 	/// If a field is required, it must be checked at runtime or have a default value.
 	init()
 
-	static func migrate(_ data: Data, from oldVersion: UInt) -> Self
+	static func decode(_ data: Data, version: Int16) throws -> Self
+    func encode() throws -> Data
 }
 
 /// The settings object, with all resolved files.
@@ -35,10 +36,10 @@ public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
 
 @MainActor
 public struct CoreSettingsDescriptor<Settings: CoreSettings> {
-	public let version: UInt
+	public let version: Int16
 	public let sections: [Self.Section]
 
-	public init(version: UInt, sections: [Self.Section]) {
+	public init(version: Int16, sections: [Self.Section]) {
 		self.version = version
 		self.sections = sections
 	}
