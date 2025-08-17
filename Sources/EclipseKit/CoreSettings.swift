@@ -36,7 +36,7 @@ public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
 
 @MainActor
 public struct CoreSettingsDescriptor<Settings: CoreSettings> {
-	public let version: Int16
+	public nonisolated let version: Int16
 	public let sections: [Self.Section]
 
 	public init(version: Int16, sections: [Self.Section]) {
