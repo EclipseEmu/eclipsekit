@@ -2,7 +2,8 @@ import Foundation.NSData
 import Foundation.NSUUID
 
 public protocol CoreSettings: Sendable, Equatable {
-	static var descriptor: CoreSettingsDescriptor<Self> { get }
+    static var currentVersion: Int16 { get }
+    static var descriptor: CoreSettingsDescriptor<Self> { get }
 
 	/// Initializes the settings to their default values.
 	/// If a field is required, it must be checked at runtime or have a default value.
@@ -34,11 +35,9 @@ public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
 }
 
 public struct CoreSettingsDescriptor<Settings: CoreSettings> {
-	public nonisolated let version: Int16
 	public let sections: [Self.Section]
 
-	public init(version: Int16, sections: [Self.Section]) {
-		self.version = version
+	public init(sections: [Self.Section]) {
 		self.sections = sections
 	}
 
