@@ -3,6 +3,7 @@ import Foundation.NSUUID
 
 public protocol CoreSettings: Sendable, Equatable {
     static var currentVersion: Int16 { get }
+    @MainActor
     static var descriptor: CoreSettingsDescriptor<Self> { get }
 
 	/// Initializes the settings to their default values.
@@ -34,6 +35,7 @@ public struct CoreSettingsFile: Hashable, Sendable, Codable, Equatable {
 	}
 }
 
+@MainActor
 public struct CoreSettingsDescriptor<Settings: CoreSettings> {
 	public let sections: [Self.Section]
 
