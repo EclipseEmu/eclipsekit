@@ -17,7 +17,7 @@ public enum CorePlayerConnectionBehavior: UInt8 {
 	case linear = 1
 }
 
-public protocol CoreProtocol: ~Copyable {
+public protocol CoreProtocol: ~Copyable, SendableMetatype {
 	associatedtype VideoRenderer: CoreVideoRendererProtocol
 	associatedtype Settings: CoreSettings
 	associatedtype Failure: Error = any Error
