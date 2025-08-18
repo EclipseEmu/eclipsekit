@@ -1,13 +1,5 @@
 import Foundation.NSURL
 
-/// A type determining the behavior of a reset.
-public enum CoreResetKind: UInt8 {
-	/// Fully reset the game
-	case hard
-	/// Quickly reset the game
-	case soft
-}
-
 /// A type determining the behavior of player connections.
 public enum CorePlayerConnectionBehavior: UInt8 {
 	/// Players will connect to any of the available ports, determined by ``CoreProtocol.maxPlayers``. When a player disconnects, other players will remain in-place.
@@ -94,8 +86,8 @@ public protocol CoreProtocol: ~Copyable, SendableMetatype {
 	/// The game will be temporarily paused.
 	mutating func pause()
 
-	/// Restarts the game using the given reset method.
-	mutating func reset(kind: CoreResetKind)
+	/// The game will do a soft reset.
+	mutating func reset()
 
 	/// The core should write the save to disk.
 	///

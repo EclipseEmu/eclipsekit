@@ -13,7 +13,5 @@ public struct CoreFeatures: OptionSet, Sendable {
 	/// This core supports save states.
 	public static let saveStates: Self    = .init(rawValue: 1 << 3)
 	/// This core supports soft resetting.
-	public static let softResetting: Self = .init(rawValue: 1 << 4)
-	/// This core supports hard resetting.
-	public static let hardResetting: Self = .init(rawValue: 1 << 5)
+	public static let softReset: Self     = .init(rawValue: 1 << 4)
 }
