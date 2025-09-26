@@ -93,7 +93,8 @@ public protocol CoreProtocol: ~Copyable, SendableMetatype {
     ///
     /// - Parameter path: The path to write the save file to.
     ///	- Returns: If the save could be properly written.
-    func save(to path: URL) async throws(Self.Failure)
+    func save(to path: URL, isolation: isolated (any Actor)? = #isolation) async throws(Self
+        .Failure)
 
     /// Attempts to save a state to the given path.
     /// - Parameter path: The path the save state is written to.
